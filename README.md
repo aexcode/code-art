@@ -15,6 +15,6 @@
 ---
 
 [![Lava Lamp](./projects/lava-lamp/assets/screenshot.png)](https://github.com/aexcode/code-art/tree/main/projects/lava-lamp)
-[Codepen](https://codepen.io/aexcode/full/wvdZaoz) | [Github](https://github.com/aexcode/code-art/tree/main/projects/lava-lamp) - Lava Lamp (January 16th, 2021) \
-_This is an animated image - see it in action on [Codepen](https://codepen.io/aexcode/full/wvdZaoz)._ \
+[Codepen](https://codepen.io/aexcode/full/wvzRNov) | [Github](https://github.com/aexcode/code-art/tree/main/projects/lava-lamp) - Lava Lamp (January 16th, 2021) \
+_This is an animated image - see it in action on [Codepen](https://codepen.io/aexcode/full/wvzRNov)._ \
 **HTML, SCSS**
