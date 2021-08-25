@@ -1,0 +1,296 @@
+$black: rgb(20, 21, 33);
+$blackOpaque: rgba(20, 21, 33, 0.8);
+$blue: #03518a;
+$blueDark: #022e4e;
+$green: rgb(31, 164, 152);
+$greenOpaque: rgba(31, 164, 152, 0.6);
+$purple: rgb(157, 78, 221);
+$greenDark: darken($green, 32%);
+$white: rgba(255, 250, 250, 0.9);
+$whiteOpaque: rgba(255, 250, 250, 0.5);
+
+$background: linear-gradient($black, $blueDark, $blue);
+$backgroundBorealis: linear-gradient(transparent, $greenOpaque) 0 100% / 100%
+  60%;
+
+$stars: radial-gradient($white 70%, transparent 70%) 3% 70% / 0.2% 0.25%,
+  radial-gradient($white 70%, transparent 70%) 7% 60% / 0.2% 0.25%,
+  radial-gradient($whiteOpaque 70%, transparent 70%) 3% 47% / 0.2% 0.25%,
+  radial-gradient($white 70%, transparent 70%) 26% 65% / 0.2% 0.25%,
+  radial-gradient($white 70%, transparent 70%) 20% 50% / 0.2% 0.25%,
+  radial-gradient($white 70%, transparent 70%) 12% 53% / 0.2% 0.25%,
+  radial-gradient($white 70%, transparent 70%) 10% 40% / 0.2% 0.25%,
+  radial-gradient($white 70%, transparent 70%) 24% 34% / 0.2% 0.25%,
+  radial-gradient($whiteOpaque 70%, transparent 70%) 38% 35% / 0.2% 0.25%,
+  radial-gradient($whiteOpaque 70%, transparent 70%) 24% 48% / 0.2% 0.25%,
+  radial-gradient($white 70%, transparent 70%) 7% 30% / 0.2% 0.25%,
+  radial-gradient($whiteOpaque 70%, transparent 70%) 2% 20% / 0.2% 0.25%,
+  radial-gradient($whiteOpaque 70%, transparent 70%) 5% 4% / 0.2% 0.25%,
+  radial-gradient($white 70%, transparent 70%) 10% 15% / 0.2% 0.25%,
+  radial-gradient($whiteOpaque 70%, transparent 70%) 15% 8% / 0.2% 0.25%,
+  radial-gradient($white 70%, transparent 70%) 20% 20% / 0.2% 0.25%,
+  radial-gradient($whiteOpaque 70%, transparent 70%) 80% 36% / 0.2% 0.25%,
+  radial-gradient($white 70%, transparent 70%) 84% 50% / 0.2% 0.25%,
+  radial-gradient($whiteOpaque 70%, transparent 70%) 97% 50% / 0.2% 0.25%,
+  radial-gradient($whiteOpaque 70%, transparent 70%) 85% 40% / 0.2% 0.25%,
+  radial-gradient($whiteOpaque 70%, transparent 70%) 90% 54% / 0.2% 0.25%,
+  radial-gradient($whiteOpaque 70%, transparent 70%) 50% 40% / 0.2% 0.25%,
+  radial-gradient($whiteOpaque 70%, transparent 70%) 55% 49% / 0.2% 0.25%,
+  radial-gradient($whiteOpaque 70%, transparent 70%) 48% 55% / 0.2% 0.25%,
+  radial-gradient($whiteOpaque 70%, transparent 70%) 33% 45% / 0.2% 0.25%,
+  radial-gradient($white 70%, transparent 70%) 80% 60% / 0.2% 0.25%,
+  radial-gradient($white 70%, transparent 70%) 88% 70% / 0.2% 0.25%,
+  radial-gradient($whiteOpaque 70%, transparent 70%) 30% 24% / 0.2% 0.25%,
+  radial-gradient($white 70%, transparent 70%) 30% 10% / 0.2% 0.25%,
+  radial-gradient($whiteOpaque 70%, transparent 70%) 15% 30% / 0.2% 0.25%,
+  radial-gradient($whiteOpaque 70%, transparent 70%) 38% 3% / 0.2% 0.25%,
+  radial-gradient($white 70%, transparent 70%) 68% 30% / 0.2% 0.2%,
+  radial-gradient($white 70%, transparent 70%) 90% 32% / 0.2% 0.25%,
+  radial-gradient($whiteOpaque 70%, transparent 70%) 85% 10% / 0.2% 0.25%,
+  radial-gradient($whiteOpaque 70%, transparent 70%) 60% 16% / 0.2% 0.25%,
+  radial-gradient($white 70%, transparent 70%) 88% 12% / 0.2% 0.25%,
+  radial-gradient($white 70%, transparent 70%) 96% 5% / 0.2% 0.25%,
+  radial-gradient($white 70%, transparent 70%) 75% 18% / 0.2% 0.25%,
+  radial-gradient($white 70%, transparent 70%) 47% 14% / 0.2% 0.25%,
+  radial-gradient($whiteOpaque 70%, transparent 70%) 54% 10% / 0.2% 0.25%,
+  radial-gradient($whiteOpaque 70%, transparent 70%) 53% 23% / 0.2% 0.25%;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.canvas {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: $backgroundBorealis, $stars, $background;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+// MOUNTAINS ==========
+@mixin sharedMountain {
+  position: absolute;
+  background: linear-gradient(darken($blueDark, 1%), transparent);
+  clip-path: polygon(49% 0, 51% 0, 100% 100%, 0% 100%);
+  border-radius: 50% 50% 0 0;
+  z-index: 2;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    right: 5%;
+    background: inherit;
+    clip-path: inherit;
+    border-radius: inherit;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 15%;
+    background: linear-gradient($whiteOpaque, transparent);
+  }
+}
+
+.mountain:nth-of-type(1) {
+  @include sharedMountain;
+  width: 50%;
+  height: 40%;
+  left: -10%;
+  bottom: 0%;
+}
+
+.mountain:nth-of-type(2) {
+  @include sharedMountain;
+  background: linear-gradient($blueDark, $blackOpaque);
+  width: 60%;
+  height: 50%;
+  left: 10%;
+  bottom: 0%;
+  z-index: 3;
+}
+
+.mountain:nth-of-type(3) {
+  @include sharedMountain;
+  width: 50%;
+  height: 65%;
+  left: 40%;
+  bottom: 0%;
+}
+
+.mountain:nth-of-type(4) {
+  @include sharedMountain;
+  background: linear-gradient($blueDark, $blackOpaque);
+  width: 30%;
+  height: 40%;
+  right: -10%;
+  bottom: 0%;
+}
+
+// TREES ==========
+@mixin sharedTree {
+  position: absolute;
+  width: 0.5%;
+  bottom: 0;
+  background: linear-gradient($greenDark, $black);
+  z-index: 4;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 800%;
+    height: 100%;
+    top: -5%;
+    left: -350%;
+    background: $greenDark;
+    clip-path: polygon(
+      50% 0%,
+      0% 30%,
+      50% 30%,
+      0% 60%,
+      50% 60%,
+      0% 90%,
+      50% 90%,
+      100% 90%,
+      50% 60%,
+      100% 60%,
+      50% 30%,
+      100% 30%
+    );
+  }
+}
+
+.tree:nth-of-type(1) {
+  @include sharedTree;
+  height: 20%;
+  right: 25%;
+}
+
+.tree:nth-of-type(2) {
+  @include sharedTree;
+  height: 15%;
+  right: 20%;
+}
+
+// LIGHTS ==========
+.lights {
+  height: 100%;
+  width: 100%;
+  animation: slide 15s ease-in-out infinite;
+
+  @keyframes slide {
+    0% {
+      transform: translate(-2%);
+    }
+    50% {
+      transform: translate(2%);
+    }
+    100% {
+      transform: translate(-2%);
+    }
+  }
+}
+
+@mixin sharedBorealis {
+  position: absolute;
+  width: 5%;
+  height: 100%;
+  bottom: 8%;
+  filter: blur(40px);
+  background: radial-gradient($green 40%, transparent);
+  opacity: 0.6;
+}
+
+.borealis:nth-of-type(1) {
+  @include sharedBorealis;
+  left: 0%;
+  animation: grow 30s ease-in-out infinite;
+}
+
+.borealis:nth-of-type(2) {
+  @include sharedBorealis;
+  left: 20%;
+  animation: grow 25s 10s ease-in-out infinite;
+}
+
+.borealis:nth-of-type(3) {
+  @include sharedBorealis;
+  left: 40%;
+  animation: grow 30s ease-in-out infinite;
+}
+
+.borealis:nth-of-type(4) {
+  @include sharedBorealis;
+  left: 60%;
+  animation: grow 20s 3s ease-in-out infinite;
+}
+
+.borealis:nth-of-type(5) {
+  @include sharedBorealis;
+  left: 80%;
+  animation: grow 25s ease-in-out infinite;
+}
+
+.borealis:nth-of-type(6) {
+  @include sharedBorealis;
+  left: 97%;
+  animation: grow 20s 8s ease-in-out infinite;
+}
+
+.borealis:nth-of-type(7) {
+  @include sharedBorealis;
+  background: radial-gradient($purple 40%, transparent);
+  transform: translatex(-200%);
+  animation: slideFullRight 25s infinite;
+}
+
+.borealis:nth-of-type(8) {
+  @include sharedBorealis;
+  background: radial-gradient($purple 40%, transparent);
+  transform: translatex(-200%);
+  animation: slideFullRight 25s 8s infinite;
+}
+
+.borealis:nth-of-type(9) {
+  @include sharedBorealis;
+  left: unset;
+  right: 0%;
+  transform: translatex(200%);
+  background: radial-gradient(lighten($blue, 3%) 40%, transparent);
+  animation: slideFullLeft 18s 5s ease-in-out infinite;
+}
+
+// ANIMATIONS ==========
+@keyframes grow {
+  50% {
+    width: 2%;
+    opacity: 0.4;
+  }
+}
+
+@keyframes slideFullRight {
+  0% {
+    transform: translatex(-200%);
+  }
+  100% {
+    transform: translatex(2000%);
+  }
+}
+
+@keyframes slideFullLeft {
+  0% {
+    transform: translatex(200%);
+  }
+  100% {
+    transform: translatex(-2000%);
+  }
+}
