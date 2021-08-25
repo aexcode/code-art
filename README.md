@@ -14,6 +14,13 @@
 
 ---
 
+[![Greedy Aliens](./projects/greedy-aliens/assets/screenshot.png)](https://github.com/aexcode/code-art/tree/main/projects/greedy-aliens)
+[Codepen](https://codepen.io/aexcode/full/xxRZdqg) | [Github](https://github.com/aexcode/code-art/tree/main/projects/greedy-aliens) - Greedy Aliens (February 5th, 2021) \
+_This is an animated image - see it in action on [Codepen](https://codepen.io/aexcode/full/xxRZdqg)._ \
+**HTML, SCSS**
+
+---
+
 [![Lava Lamp](./projects/lava-lamp/assets/screenshot.png)](https://github.com/aexcode/code-art/tree/main/projects/lava-lamp)
 [Codepen](https://codepen.io/aexcode/full/wvzRNov) | [Github](https://github.com/aexcode/code-art/tree/main/projects/lava-lamp) - Lava Lamp (January 16th, 2021) \
 _This is an animated image - see it in action on [Codepen](https://codepen.io/aexcode/full/wvzRNov)._ \

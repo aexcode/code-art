@@ -1,0 +1,496 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #202020;
+}
+
+.container {
+  width: 100%;
+  max-width: 40%;
+}
+.container .canvas {
+  position: relative;
+  padding-top: 100%;
+  border-radius: 50%;
+  background: linear-gradient(#272640 35%, #212f45);
+  overflow: hidden;
+}
+
+.ufo {
+  position: absolute;
+  width: 40%;
+  height: 15%;
+  top: 15%;
+  left: 30%;
+  animation: ufo 7.5s infinite;
+}
+.ufo:before {
+  content: "";
+  position: absolute;
+  background: linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25)), linear-gradient(#272640, #272640);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 60%;
+  height: 120%;
+  left: 20%;
+  bottom: 0;
+  border-radius: 50%;
+}
+.ufo:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #fffafa;
+  clip-path: polygon(20% 25%, 80% 25%, 100% 60%, 65% 100%, 35% 100%, 0 60%);
+  background: linear-gradient(#d7d7d7, #c3c3c3, #cccccc, #c6c6c6, #d3d3d3, #d8d8d8, #d5d5d5, #d8d8d8, #d3d3d3, #c5c5c5, #c0c0c0, #bfbfbf, #d0d0d0, #d9d9d9, #d1d1d1, #c5c5c5, #c8c8c8, #d7d7d7);
+}
+
+.beam {
+  position: absolute;
+  width: 60%;
+  height: 220%;
+  left: 20%;
+  top: 99%;
+  background: #ffe66d;
+  opacity: 0.2;
+  clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%);
+  clip-path: polygon(25% 0, 75% 0, 100% 100%, 0% 100%);
+  animation: beam 7.5s infinite;
+}
+
+.earth {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 60%;
+  border-radius: 50%;
+  background: radial-gradient(#065a60 50%, transparent);
+  background-repeat: no-repeat;
+  animation: earth 30s infinite;
+}
+
+.pig {
+  position: absolute;
+  width: 12%;
+  height: 10%;
+  left: 44%;
+  top: -10%;
+  animation: animal1 30s infinite;
+}
+.pig:before {
+  position: absolute;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5vw;
+  color: #272640;
+  padding: 0.5vw;
+  background: #fffafa;
+  border-radius: 45%;
+  opacity: 0;
+}
+.pig:before {
+  content: "oink!";
+  left: -80%;
+  top: -30%;
+  animation: speechBubble 30s infinite;
+}
+.pig .head {
+  position: absolute;
+  width: 35%;
+  height: 35%;
+  bottom: 20%;
+  left: 5%;
+  background: radial-gradient(#ffa7b4 60%, transparent 60%), linear-gradient(-25deg, #ffa7b4 50%, transparent 50%);
+  transform: rotate(-10deg);
+  z-index: 3;
+}
+.pig .head:before {
+  content: "";
+  position: absolute;
+  width: 40%;
+  height: 50%;
+  right: 30%;
+  top: -15%;
+  background: linear-gradient(45deg, #ffa7b4, #ff7e91);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.pig .head:after {
+  content: "";
+  position: absolute;
+  width: 10%;
+  height: 8%;
+  top: 35%;
+  left: 28%;
+  background: #202020;
+  border-radius: 50%;
+}
+.pig .body {
+  position: absolute;
+  width: 60%;
+  height: 50%;
+  bottom: 13%;
+  right: 15%;
+  background: #ffa7b4;
+  border-radius: 50% 45% 40% 40%;
+  z-index: 2;
+}
+.pig .body:before {
+  content: "";
+  position: absolute;
+  width: 10%;
+  height: 30%;
+  right: -5%;
+  bottom: 40%;
+  border-radius: 50%;
+  transform: rotate(-10deg);
+  background: #ff7e91;
+}
+.pig .legs {
+  position: absolute;
+  width: 45%;
+  height: 20%;
+  right: 21%;
+  bottom: 0;
+  background: repeating-linear-gradient(90deg, #ffa7b4 0 25%, #ff7e91 25% 40%, transparent 40% 65%);
+  z-index: 1;
+}
+
+.cow {
+  position: absolute;
+  width: 12%;
+  height: 10%;
+  height: 12%;
+  width: 10%;
+  right: -10%;
+  top: 44%;
+  animation: animal2 30s 7.5s infinite;
+}
+.cow:before {
+  position: absolute;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5vw;
+  color: #272640;
+  padding: 0.5vw;
+  background: #fffafa;
+  border-radius: 45%;
+  opacity: 0;
+}
+.cow:before {
+  content: "moo!";
+  transform: rotate(90deg);
+  left: 10%;
+  top: -90%;
+  animation: speechBubble 30s 7.5s infinite;
+}
+.cow .body {
+  position: absolute;
+  width: 50%;
+  height: 65%;
+  right: 28%;
+  bottom: 12%;
+  background: #fffafa;
+  border-radius: 25%;
+  overflow: hidden;
+  z-index: 3;
+}
+.cow .body:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: radial-gradient(#543326 60%, transparent 60%) 0 -90%/50% 50%;
+  transform: rotate(30deg);
+}
+.cow .head {
+  position: absolute;
+  width: 50%;
+  height: 30%;
+  right: 10%;
+  background: linear-gradient(50deg, #fffafa 50%, transparent 50%);
+  border-radius: 30%;
+  z-index: 4;
+}
+.cow .head:after {
+  content: "";
+  position: absolute;
+  width: 12%;
+  height: 10%;
+  top: 45%;
+  left: 30%;
+  background: #202020;
+  border-radius: 50%;
+}
+.cow .legs {
+  position: absolute;
+  height: 60%;
+  width: 40%;
+  bottom: 12%;
+  background: repeating-linear-gradient(#fffafa 0 20%, #543326 20% 40%, transparent 40% 65%);
+  z-index: 1;
+}
+.cow .tail {
+  position: absolute;
+  width: 40%;
+  height: 5%;
+  right: 40%;
+  bottom: 10%;
+  border-bottom: 1px solid #fffafa;
+  border-radius: 50%;
+  transform: rotate(-10deg);
+}
+
+.chicken {
+  position: absolute;
+  width: 12%;
+  height: 10%;
+  left: 44%;
+  bottom: -10%;
+  animation: animal3 30s 15s infinite;
+}
+.chicken:before {
+  position: absolute;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5vw;
+  color: #272640;
+  padding: 0.5vw;
+  background: #fffafa;
+  border-radius: 45%;
+  opacity: 0;
+}
+.chicken:before {
+  content: "cluck!";
+  transform: rotate(180deg);
+  left: 110%;
+  top: 40%;
+  animation: speechBubble 30s 15s infinite;
+}
+.chicken .body {
+  position: absolute;
+  width: 50%;
+  height: 40%;
+  top: 13%;
+  left: 20%;
+  background: #9a5f46;
+  border-radius: 50%;
+  z-index: 2;
+}
+.chicken .body:before {
+  content: "";
+  position: absolute;
+  width: 45%;
+  height: 80%;
+  top: 55%;
+  left: 58%;
+  background: linear-gradient(50deg, transparent 40%, #9a5f46 40%);
+}
+.chicken .body:after {
+  content: "";
+  position: absolute;
+  width: 30%;
+  height: 50%;
+  top: 60%;
+  left: 0%;
+  background: linear-gradient(-50deg, transparent 40%, #9a5f46 40%);
+  transform: rotate(5deg);
+}
+.chicken .head {
+  position: absolute;
+  width: 20%;
+  height: 15%;
+  bottom: 30%;
+  right: 10%;
+  background: #912f56;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+.chicken .legs {
+  position: absolute;
+  width: 33%;
+  height: 20%;
+  left: 30%;
+  background: linear-gradient(90deg, transparent 25%, #d5b2a4 25% 35%, transparent 35% 65%, #d5b2a4 65% 75%, transparent 75% 100%);
+  z-index: 1;
+}
+
+.sheep {
+  position: absolute;
+  width: 12%;
+  height: 10%;
+  height: 12%;
+  width: 10%;
+  left: -10%;
+  top: 44%;
+  animation: animal4 30s 22.5s infinite;
+}
+.sheep:before {
+  position: absolute;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5vw;
+  color: #272640;
+  padding: 0.5vw;
+  background: #fffafa;
+  border-radius: 45%;
+  opacity: 0;
+}
+.sheep:before {
+  content: "baa!";
+  transform: rotate(270deg);
+  left: -30%;
+  bottom: -90%;
+  animation: speechBubble 30s 22.5s infinite;
+}
+.sheep .body {
+  position: absolute;
+  width: 50%;
+  height: 60%;
+  bottom: 25%;
+  right: 15%;
+  background: #fffafa;
+  border-radius: 40%;
+  z-index: 2;
+}
+.sheep .body:before {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 40%;
+  left: 10%;
+  top: -10%;
+  background: #fffafa;
+  border-radius: 50%;
+}
+.sheep .body:after {
+  content: "";
+  position: absolute;
+  width: 80%;
+  height: 45%;
+  top: 55%;
+  left: -50%;
+  background: linear-gradient(-50deg, #fffafa 40%, transparent 40%);
+}
+.sheep .head {
+  position: absolute;
+  width: 30%;
+  height: 20%;
+  bottom: 10%;
+  left: 20%;
+  background: #fffafa;
+  clip-path: polygon(0 0, 100% 0, 60% 100%, 40% 100%);
+}
+.sheep .legs {
+  position: absolute;
+  width: 20%;
+  height: 45%;
+  right: 0%;
+  top: 21%;
+  background: repeating-linear-gradient(#a0a0a0 0 12%, #fffafa 12% 40%, transparent 40% 65%);
+  z-index: 1;
+}
+
+@keyframes ufo {
+  0%, 10% {
+    transform: translate(200%);
+  }
+  40%, 60% {
+    transform: translate(0%);
+  }
+  90%, 100% {
+    transform: translate(-200%);
+  }
+}
+@keyframes beam {
+  0%, 35% {
+    clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%);
+  }
+  45%, 55% {
+    width: 60%;
+    clip-path: polygon(25% 0, 75% 0, 100% 100%, 0% 100%);
+  }
+  60%, 100% {
+    clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%);
+  }
+}
+@keyframes speechBubble {
+  0%, 3% {
+    opacity: 0%;
+  }
+  3.5%, 4.5% {
+    opacity: 1;
+  }
+  5%, 100% {
+    opacity: 0%;
+  }
+}
+@keyframes animal1 {
+  0%, 11.25% {
+    transform: translate(0%, 0%);
+  }
+  13.75%, 15% {
+    transform: translate(0%, -300%) scale(0.5);
+  }
+  20% {
+    transform: translate(-500%, -300%);
+  }
+}
+@keyframes animal2 {
+  0%, 11.25% {
+    transform: translate(0%, 0%);
+  }
+  13.75%, 15% {
+    transform: translate(300%, 0%) scale(0.5);
+  }
+  20% {
+    transform: translate(300%, -500%);
+  }
+}
+@keyframes animal3 {
+  0%, 11.25% {
+    transform: translate(0%, 0%);
+  }
+  13.75%, 15% {
+    transform: translate(0%, 300%) scale(0.5);
+  }
+  20% {
+    transform: translate(500%, 300%);
+  }
+}
+@keyframes animal4 {
+  0%, 11.25% {
+    transform: translate(0%, 0%);
+  }
+  13.75%, 15% {
+    transform: translate(-300%, 0%) scale(0.5);
+  }
+  20% {
+    transform: translate(-300%, 500%);
+  }
+}
+@keyframes earth {
+  0%, 20% {
+    transform: rotate(0deg);
+  }
+  25%, 46% {
+    transform: rotate(-90deg);
+  }
+  50%, 71% {
+    transform: rotate(-180deg);
+  }
+  75%, 96% {
+    transform: rotate(-270deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

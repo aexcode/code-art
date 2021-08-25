@@ -1,0 +1,650 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+$black: #202020;
+$blue: #212f45;
+$brown: darken(#774936, 10%);
+$brownLight: lighten($brown, 20%);
+$green: #065a60;
+$grey: lighten($black, 50%);
+$magenta: #912f56;
+$midnight: #272640;
+$pink: darken(lightpink, 3%);
+$pinkDark: darken($pink, 8%);
+$white: #fffafa;
+$whiteOpaque: rgba(255, 250, 250, 0.9);
+$yellow: #ffe66d;
+
+$sky: linear-gradient($midnight 35%, $blue);
+$hill: radial-gradient($green 50%, transparent);
+$beamClosed: polygon(50% 0, 50% 0, 50% 100%, 50% 100%);
+$beamOpen: polygon(25% 0, 75% 0, 100% 100%, 0% 100%);
+
+$ufoDuration: 7.5s;
+$earthDuration: $ufoDuration * 4;
+
+$ufoAnimation: ufo $ufoDuration infinite;
+$earthAnimation: earth $earthDuration infinite;
+$animalAnimation1: animal1 $earthDuration infinite;
+$animalAnimation2: animal2 $earthDuration ($ufoDuration * 1) infinite;
+$animalAnimation3: animal3 $earthDuration ($ufoDuration * 2) infinite;
+$animalAnimation4: animal4 $earthDuration ($ufoDuration * 3) infinite;
+$speechAnimation1: speechBubble $earthDuration infinite;
+$speechAnimation2: speechBubble $earthDuration ($ufoDuration * 1) infinite;
+$speechAnimation3: speechBubble $earthDuration ($ufoDuration * 2) infinite;
+$speechAnimation4: speechBubble $earthDuration ($ufoDuration * 3) infinite;
+$beamAnimation: beam $ufoDuration infinite;
+
+@mixin glass {
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.25),
+      rgba(255, 255, 255, 0.25)
+    ),
+    linear-gradient($midnight, $midnight);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background: $black;
+}
+
+.container {
+  width: 100%;
+  max-width: 40%;
+
+  .canvas {
+    position: relative;
+    padding-top: 100%;
+    border-radius: 50%;
+    background: $sky;
+    overflow: hidden;
+  }
+}
+
+.ufo {
+  position: absolute;
+  width: 40%;
+  height: 15%;
+  top: 15%;
+  left: 30%;
+  animation: $ufoAnimation;
+
+  // ufo bulb =====
+  &:before {
+    content: '';
+    position: absolute;
+    @include glass;
+    width: 60%;
+    height: 120%;
+    left: 20%;
+    bottom: 0;
+    border-radius: 50%;
+  }
+
+  // ufo hexagon =====
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: $white;
+    $ufoHexagon: polygon(20% 25%, 80% 25%, 100% 60%, 65% 100%, 35% 100%, 0 60%);
+    clip-path: $ufoHexagon;
+    background: linear-gradient(
+      #d7d7d7,
+      #c3c3c3,
+      #cccccc,
+      #c6c6c6,
+      #d3d3d3,
+      #d8d8d8,
+      #d5d5d5,
+      #d8d8d8,
+      #d3d3d3,
+      #c5c5c5,
+      #c0c0c0,
+      #bfbfbf,
+      #d0d0d0,
+      #d9d9d9,
+      #d1d1d1,
+      #c5c5c5,
+      #c8c8c8,
+      #d7d7d7
+    );
+  }
+}
+
+.beam {
+  position: absolute;
+  width: 60%;
+  height: 220%;
+  left: 20%;
+  top: 99%;
+  background: $yellow;
+  opacity: 0.2;
+  clip-path: $beamClosed;
+  clip-path: $beamOpen;
+  animation: $beamAnimation;
+}
+
+.earth {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 60%;
+  border-radius: 50%;
+  background: $hill;
+  background-repeat: no-repeat;
+  animation: $earthAnimation;
+}
+
+@mixin sharedAnimal {
+  position: absolute;
+  width: 12%;
+  height: 10%;
+
+  &:before {
+    position: absolute;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5vw;
+    color: $midnight;
+    padding: 0.5vw;
+    background: $white;
+    border-radius: 45%;
+    opacity: 0;
+  }
+}
+
+// pig =====
+.pig {
+  @include sharedAnimal;
+  left: 44%;
+  top: -10%;
+  animation: $animalAnimation1;
+
+  &:before {
+    content: 'oink!';
+    left: -80%;
+    top: -30%;
+    animation: $speechAnimation1;
+  }
+  // pig head =====
+  .head {
+    position: absolute;
+    width: 35%;
+    height: 35%;
+    bottom: 20%;
+    left: 5%;
+    $snout: linear-gradient(-25deg, $pink 50%, transparent 50%);
+    $head: radial-gradient($pink 60%, transparent 60%);
+    background: $head, $snout;
+    transform: rotate(-10deg);
+    z-index: 3;
+
+    // pig ear =====
+    &:before {
+      content: '';
+      position: absolute;
+      width: 40%;
+      height: 50%;
+      right: 30%;
+      top: -15%;
+      $ear: linear-gradient(45deg, $pink, $pinkDark);
+      background: $ear;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+
+    // pig eye =====
+    &:after {
+      content: '';
+      position: absolute;
+      width: 10%;
+      height: 8%;
+      top: 35%;
+      left: 28%;
+      background: $black;
+      border-radius: 50%;
+    }
+  }
+
+  // pig body =====
+  .body {
+    position: absolute;
+    width: 60%;
+    height: 50%;
+    bottom: 13%;
+    right: 15%;
+    background: $pink;
+    border-radius: 50% 45% 40% 40%;
+    z-index: 2;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 10%;
+      height: 30%;
+      right: -5%;
+      bottom: 40%;
+      border-radius: 50%;
+      transform: rotate(-10deg);
+      background: $pinkDark;
+    }
+  }
+
+  // pig legs =====
+  .legs {
+    position: absolute;
+    width: 45%;
+    height: 20%;
+    right: 21%;
+    bottom: 0;
+    $legs: repeating-linear-gradient(
+      90deg,
+      $pink 0 25%,
+      $pinkDark 25% 40%,
+      transparent 40% 65%
+    );
+    background: $legs;
+    z-index: 1;
+  }
+}
+
+// cow =====
+.cow {
+  @include sharedAnimal;
+  height: 12%;
+  width: 10%;
+  right: -10%;
+  top: 44%;
+  animation: $animalAnimation2;
+
+  &:before {
+    content: 'moo!';
+    transform: rotate(90deg);
+    left: 10%;
+    top: -90%;
+    animation: $speechAnimation2;
+  }
+
+  // cow body =====
+  .body {
+    position: absolute;
+    width: 50%;
+    height: 65%;
+    right: 28%;
+    bottom: 12%;
+    background: $white;
+    border-radius: 25%;
+    overflow: hidden;
+    z-index: 3;
+
+    // cow spots =====
+    &:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      $spots: radial-gradient($brown 60%, transparent 60%) 0 -90% / 50% 50%;
+      background: $spots;
+      transform: rotate(30deg);
+    }
+  }
+
+  // cow head =====
+  .head {
+    position: absolute;
+    width: 50%;
+    height: 30%;
+    right: 10%;
+    background: linear-gradient(50deg, $white 50%, transparent 50%);
+    border-radius: 30%;
+    z-index: 4;
+
+    // cow eye =====
+    &:after {
+      content: '';
+      position: absolute;
+      width: 12%;
+      height: 10%;
+      top: 45%;
+      left: 30%;
+      background: $black;
+      border-radius: 50%;
+    }
+  }
+
+  // cow legs =====
+  .legs {
+    position: absolute;
+    height: 60%;
+    width: 40%;
+    bottom: 12%;
+    $legs: repeating-linear-gradient(
+      $white 0 20%,
+      $brown 20% 40%,
+      transparent 40% 65%
+    );
+    background: $legs;
+    z-index: 1;
+  }
+
+  // cow tail =====
+  .tail {
+    position: absolute;
+    width: 40%;
+    height: 5%;
+    right: 40%;
+    bottom: 10%;
+    border-bottom: 1px solid $white;
+    border-radius: 50%;
+    transform: rotate(-10deg);
+  }
+}
+
+// chicken =====
+.chicken {
+  @include sharedAnimal;
+  left: 44%;
+  bottom: -10%;
+  animation: $animalAnimation3;
+
+  &:before {
+    content: 'cluck!';
+    transform: rotate(180deg);
+    left: 110%;
+    top: 40%;
+    animation: $speechAnimation3;
+  }
+
+  // chicken body =====
+  .body {
+    position: absolute;
+    width: 50%;
+    height: 40%;
+    top: 13%;
+    left: 20%;
+    background: $brownLight;
+    border-radius: 50%;
+    z-index: 2;
+
+    // chicken neck =====
+    &:before {
+      content: '';
+      position: absolute;
+      width: 45%;
+      height: 80%;
+      top: 55%;
+      left: 58%;
+      $neck: linear-gradient(50deg, transparent 40%, $brownLight 40%);
+      background: $neck;
+    }
+
+    // chicken tail =====
+    &:after {
+      content: '';
+      position: absolute;
+      width: 30%;
+      height: 50%;
+      top: 60%;
+      left: 0%;
+      $tail: linear-gradient(-50deg, transparent 40%, $brownLight 40%);
+      background: $tail;
+      transform: rotate(5deg);
+    }
+  }
+
+  // chicken head =====
+  .head {
+    position: absolute;
+    width: 20%;
+    height: 15%;
+    bottom: 30%;
+    right: 10%;
+    background: $magenta;
+    $head: polygon(0 0, 100% 50%, 0 100%);
+    clip-path: $head;
+  }
+
+  // chicken legs =====
+  .legs {
+    position: absolute;
+    width: 33%;
+    height: 20%;
+    left: 30%;
+    $legs: linear-gradient(
+      90deg,
+      transparent 25%,
+      lighten($brownLight, 30%) 25% 35%,
+      transparent 35% 65%,
+      lighten($brownLight, 30%) 65% 75%,
+      transparent 75% 100%
+    );
+    background: $legs;
+    z-index: 1;
+  }
+}
+
+//  sheep =====
+.sheep {
+  @include sharedAnimal;
+  height: 12%;
+  width: 10%;
+  left: -10%;
+  top: 44%;
+  animation: $animalAnimation4;
+
+  &:before {
+    content: 'baa!';
+    transform: rotate(270deg);
+    left: -30%;
+    bottom: -90%;
+    animation: $speechAnimation4;
+  }
+
+  // sheep body =====
+  .body {
+    position: absolute;
+    width: 50%;
+    height: 60%;
+    bottom: 25%;
+    right: 15%;
+    background: $white;
+    border-radius: 40%;
+    z-index: 2;
+
+    // sheep tail =====
+    &:before {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 40%;
+      left: 10%;
+      top: -10%;
+      background: $white;
+      border-radius: 50%;
+    }
+
+    // sheep neck =====
+    &:after {
+      content: '';
+      position: absolute;
+      width: 80%;
+      height: 45%;
+      top: 55%;
+      left: -50%;
+      $neck: linear-gradient(-50deg, $white 40%, transparent 40%);
+      background: $neck;
+    }
+  }
+
+  // sheep head =====
+  .head {
+    position: absolute;
+    width: 30%;
+    height: 20%;
+    bottom: 10%;
+    left: 20%;
+    background: $white;
+    clip-path: polygon(0 0, 100% 0, 60% 100%, 40% 100%);
+  }
+
+  // sheep legs =====
+  .legs {
+    position: absolute;
+    width: 20%;
+    height: 45%;
+    right: 0%;
+    top: 21%;
+    $legs: repeating-linear-gradient(
+      $grey 0 12%,
+      $white 12% 40%,
+      transparent 40% 65%
+    );
+    background: $legs;
+    z-index: 1;
+  }
+}
+
+@keyframes ufo {
+  0%,
+  10% {
+    transform: translate(200%);
+  }
+  40%,
+  60% {
+    transform: translate(0%);
+  }
+  90%,
+  100% {
+    transform: translate(-200%);
+  }
+}
+
+@keyframes beam {
+  0%,
+  35% {
+    clip-path: $beamClosed;
+  }
+
+  45%,
+  55% {
+    width: 60%;
+    clip-path: $beamOpen;
+  }
+  60%,
+  100% {
+    clip-path: $beamClosed;
+  }
+}
+
+@keyframes speechBubble {
+  0%,
+  3% {
+    opacity: 0%;
+  }
+
+  3.5%,
+  4.5% {
+    opacity: 1;
+  }
+
+  5%,
+  100% {
+    opacity: 0%;
+  }
+}
+
+@keyframes animal1 {
+  0%,
+  11.25% {
+    transform: translate(0%, 0%);
+  }
+
+  13.75%,
+  15% {
+    transform: translate(0%, -300%) scale(0.5);
+  }
+
+  20% {
+    transform: translate(-500%, -300%);
+  }
+}
+
+@keyframes animal2 {
+  0%,
+  11.25% {
+    transform: translate(0%, 0%);
+  }
+  13.75%,
+  15% {
+    transform: translate(300%, 0%) scale(0.5);
+  }
+
+  20% {
+    transform: translate(300%, -500%);
+  }
+}
+
+@keyframes animal3 {
+  0%,
+  11.25% {
+    transform: translate(0%, 0%);
+  }
+  13.75%,
+  15% {
+    transform: translate(0%, 300%) scale(0.5);
+  }
+
+  20% {
+    transform: translate(500%, 300%);
+  }
+}
+
+@keyframes animal4 {
+  0%,
+  11.25% {
+    transform: translate(0%, 0%);
+  }
+  13.75%,
+  15% {
+    transform: translate(-300%, 0%) scale(0.5);
+  }
+
+  20% {
+    transform: translate(-300%, 500%);
+  }
+}
+
+@keyframes earth {
+  0%,
+  20% {
+    transform: rotate(0deg);
+  }
+  25%,
+  46% {
+    transform: rotate(-90deg);
+  }
+  50%,
+  71% {
+    transform: rotate(-180deg);
+  }
+  75%,
+  96% {
+    transform: rotate(-270deg);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
+}
