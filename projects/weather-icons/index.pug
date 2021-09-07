@@ -1,0 +1,107 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='UTF-8')
+		meta(http-equiv='X-UA-Compatible' content='IE=edge')
+		meta(name='viewport' content='width=device-width, initial-scale=1.0')
+		link(rel='stylesheet', href='../css/style.css')
+		title Weather Icons Showcase
+	body
+		.container
+			header
+				h1 Pure CSS Weather Icons
+			.showcase
+				a#sunny.canvas(
+					href="https://codepen.io/aexcode/pen/MWbPrdZ",
+					target="_blank"
+				)
+					.sun
+						- let totalBeamsOne = 0;
+							while totalBeamsOne < 8
+								.beam 
+								- totalBeamsOne++;
+				a#partially-cloudy.canvas(
+					href="https://codepen.io/aexcode/pen/mdOzxZb",
+					target="_blank"
+				)
+					.sun
+						- let totalBeamsTwo = 0;
+							while totalBeamsTwo < 8
+								.beam 
+								- totalBeamsTwo++;
+					.cloud
+				a#rain.canvas(href="https://codepen.io/aexcode/pen/wvoYXVZ", target="_blank")
+					.sun
+						- let totalBeamsThree = 0;
+							while totalBeamsThree < 8
+								.beam 
+								- totalBeamsThree++;
+					.cloud
+						.cloud-copy
+						.rain
+							- let totalDropsOne = 0;
+								while totalDropsOne < 10
+									.drop
+									- totalDropsOne++;
+				a#thunderstorm.canvas(
+					href="https://codepen.io/aexcode/pen/vYyQNWQ",
+					target="_blank"
+				)
+					.cloud
+						.cloud-copy
+						.rain
+							- let totalDropsThree = 0;
+								while totalDropsThree < 10
+									.drop
+									- totalDropsThree++;
+							.lightning
+				a#snow.canvas(href="https://codepen.io/aexcode/pen/vYyQxXo", target="_blank")
+					.cloud
+						.cloud-copy
+						.snow
+							- let totalFlakes = 0;
+								while totalFlakes < 10
+									.flake
+										- let totalFlakeParts = 0;
+											while totalFlakeParts < 6
+												.flake-part
+												- totalFlakeParts++;
+									- totalFlakes++;
+				a#rainy.canvas(
+					href="https://codepen.io/aexcode/pen/oNYQxGY",
+					target="_blank"
+				)
+					.clouds
+						- let totalCloudsOne = 0;
+							while totalCloudsOne < 2
+								.cloud
+									.cloud-copy
+									.rain
+										- let totalDropsTwo = 0;
+											while totalDropsTwo < 10
+												.drop
+												- totalDropsTwo++;
+								- totalCloudsOne++;
+				a#broken-clouds.canvas(
+					href="https://codepen.io/aexcode/pen/ZEBqRpd",
+					target="_blank"
+				)
+					.clouds
+						.cloud
+						.cloud
+						.cloud
+				a#scattered-clouds.canvas(
+					href="https://codepen.io/aexcode/pen/bGBmMdB",
+					target="_blank"
+				)
+					.clouds
+						.cloud
+						.cloud
+						.cloud
+				a#mist.canvas(href="https://codepen.io/aexcode/pen/BaQGWRz", target="_blank")
+					.mist
+						- let totalMistLines = 0;
+							while totalMistLines < 5
+								.mist-line
+								- totalMistLines++;
+
